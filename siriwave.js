@@ -159,7 +159,13 @@ function SiriWave(opt) {
 	this.amplitude = (opt.amplitude == undefined) ? 1 : opt.amplitude;
 	this.speed = (opt.speed == undefined) ? 0.2 : opt.speed;
 	this.frequency = (opt.frequency == undefined) ? 6 : opt.frequency;
-	this.color = this._hex2rgb(opt.color || '#fff');
+	if(Array.isArray(opt.color)){
+		this.color = this._hex2rgb(opt.color[0]);
+	}else if(typeof opt.color==='string'){
+		this.color = this._hex2rgb(opt.color);
+	}else{
+		this.color = this._hex2rgb( '#fff');
+	}
 
 	// Interpolation
 
@@ -189,11 +195,22 @@ function SiriWave(opt) {
 
 	var i = 0, j = 0;
 	if (this.style === 'ios9') {
-		for (; i < SiriWave9Curve.prototype.definition.length; i++) {
+		var colors = SiriWave9Curve.prototype.definition;
+		if(opt.color){
+			if(typeof opt.color === 'string'){
+				colors=[{color:this._hex2rgb(opt.color)}]
+			}else if(Array.isArray(opt.color)){
+				for(var i=0;i<opt.color.length;i++){
+					colors.push({color:this._hex2rgb(opt.color[i])})
+				}
+			}
+			
+		}
+		for (; i < colors.length; i++) {
 			for (j = 0; j < (3 * Math.random()) | 0; j++) {
 				this.curves.push(new SiriWave9Curve({
 					controller: this,
-					definition: SiriWave9Curve.prototype.definition[i]
+					definition: colors[i]
 				}));
 			}
 		}

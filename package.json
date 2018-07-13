@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caffeinalab/siriwavejs.git"
+    "url": "git+https://github.com/wayou/siriwavejs.git"
   },
   "keywords": [
     "siri",
@@ -18,7 +18,7 @@
   "author": "Flavio De Stefano",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/caffeinalab/siriwavejs/issues"
+    "url": "https://github.com/wayou/siriwavejs/issues"
   },
-  "homepage": "https://github.com/caffeinalab/siriwavejs#readme"
+  "homepage": "https://github.com/wayou/siriwavejs#readme"
 }
